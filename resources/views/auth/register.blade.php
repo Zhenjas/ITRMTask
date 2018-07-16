@@ -14,7 +14,7 @@
                 <div class="field text-left">
                     <label for="gender">Title<span>*</span></label>
                     <select class="input-group" name="title" style="width: 65px;">
-                      <option disabled selected value>-----</option>
+                      <option disabled selected value="">-----</option>
                         <option value="1">Mr</option>
                         <option value="2">Mrs</option>
                         <option value="3">Miss</option>
@@ -110,7 +110,9 @@
                 </div>
                 <div class="field">
                     <label for="country">Country<span>*</span></label>
-                    <input type="text" class="input-group" name="country" value="{{ old('country') }}">
+                    <select class="input-group" name="country">
+                        @include('addons.country_list')
+                    </select>
                     <span id="country" class="validity form-control{{ $errors->has('country') ? ' visible' : '' }}">
                         @if ($errors->has('country'))
                                 {{ $errors->first('country') }}
