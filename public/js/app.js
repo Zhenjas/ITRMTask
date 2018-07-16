@@ -28,12 +28,18 @@ const emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".
 
 const picker = new Pikaday({
     field: document.getElementById('dob-picker'),
-    format: 'DD/MM/YYYY'
+    format: 'DD/MM/YYYY',
+    onSelect: function() {
+	    from.config({minDate: this.getDate()});
+	}
 });
 
 const from = new Pikaday({
     field: document.getElementById('from-picker'),
-    format: 'DD/MM/YYYY'
+    format: 'DD/MM/YYYY',
+    onSelect: function() {
+	    until.config({minDate: this.getDate()});
+	}
 });
 
 const until = new Pikaday({
