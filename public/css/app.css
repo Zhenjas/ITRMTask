@@ -68,11 +68,8 @@ button{
 	max-width: 500px;
 	text-align: right;
 	border-radius: 5px;
-	background-color: #f2f2f2;
-}
-
-.password-form{
 	margin-bottom: 15px;
+	background-color: #f2f2f2;
 }
 
 .dashboard-form{
@@ -90,7 +87,6 @@ button{
 	text-align: center !important;
 	font-size: 16px;
 	font-weight: bold;
-	margin-bottom: 15px;
 }
 
 .field{
@@ -149,6 +145,24 @@ button{
 
 .field label span{
 	color: red;
+}
+
+.field-checkbox{
+	color: #636363;
+	font-weight: bold;
+	font-size: 15px;
+	margin:5px;
+}
+
+.field-checkbox input{
+	width: 15px;
+	height: 15px;
+	vertical-align:middle;
+	-webkit-appearance: checkbox;
+}
+
+.field-checkbox label{
+	vertical-align:middle;
 }
 
 .validity{

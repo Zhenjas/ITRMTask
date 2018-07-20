@@ -15,11 +15,11 @@
                 <label for="gender">Title<span>*</span></label>
                 <select class="input-group" name="title" style="width: 65px;">
                   <option disabled selected value="">-----</option>
-                    <option value="1">Mr</option>
-                    <option value="2">Mrs</option>
-                    <option value="3">Miss</option>
-                    <option value="4">Ms</option>
-                    <option value="5">Dr</option>
+                    <option value="1" {{ (old("title") == "1" ? "selected":"") }}>Mr</option>
+                    <option value="2" {{ (old("title") == "2" ? "selected":"") }}>Mrs</option>
+                    <option value="3" {{ (old("title") == "3" ? "selected":"") }}>Miss</option>
+                    <option value="4" {{ (old("title") == "4" ? "selected":"") }}>Ms</option>
+                    <option value="5" {{ (old("title") == "5" ? "selected":"") }}>Dr</option>
                 </select>
                 <span id="title" class="validity form-control{{ $errors->has('title') ? ' visible' : '' }}">
                     @if ($errors->has('title'))
@@ -71,9 +71,9 @@
                 <label for="gender">Gender<span>*</span></label>
                 <select class="input-group" name="gender">
                   <option disabled selected value>Please select...</option>
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
-                  <option value="3">Not specified</option>
+                  <option value="1"{{ (old("gender") == "1" ? "selected":"") }}>Male</option>
+                  <option value="2"{{ (old("gender") == "2" ? "selected":"") }}>Female</option>
+                  <option value="3"{{ (old("gender") == "3" ? "selected":"") }}>Not specified</option>
                 </select>
                 <span id="gender" class="validity form-control{{ $errors->has('gender') ? ' visible' : '' }}">
                     @if ($errors->has('gender'))
@@ -111,7 +111,12 @@
             <div class="field">
                 <label for="country">Country<span>*</span></label>
                 <select class="input-group" name="country">
+                    @if (old("country"))
+                        <option selected value="{{ old("country") }}">{{ old("country") }}</option>
+                        <option disabled value>-----</option>
+                    @else
                     <option disabled selected value>Please select...</option>
+                    @endif
                     @include('addons.country_list')
                 </select>
                 <span id="country" class="validity form-control{{ $errors->has('country') ? ' visible' : '' }}">

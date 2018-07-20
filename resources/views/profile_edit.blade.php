@@ -15,7 +15,7 @@
         </div>        
     @endif
 
-    <div class="form password-form">
+    <div class="form">
         <form id="password-form" method="POST" action="/password_update">
                     @csrf
             <div class="field">
@@ -44,13 +44,12 @@
             <div class="field text-left">
                 <label for="gender">Title<span>*</span></label>
                 <select class="input-group" name="title" style="width: 65px;">
-                  <option value="{{Auth::user()->title}}" selected>{{Auth::user()->title}}</option>
-                  <option disabled value>--------</option>
-                    <option value="1">Mr</option>
-                    <option value="2">Mrs</option>
-                    <option value="3">Miss</option>
-                    <option value="4">Ms</option>
-                    <option value="5">Dr</option>
+                  <option disabled value>------</option>
+                    <option value="1" {{ (Auth::user()->title == "1" ? "selected":"") }}>Mr</option>
+                    <option value="2" {{ (Auth::user()->title == "2" ? "selected":"") }}>Mrs</option>
+                    <option value="3" {{ (Auth::user()->title == "3" ? "selected":"") }}>Miss</option>
+                    <option value="4" {{ (Auth::user()->title == "4" ? "selected":"") }}>Ms</option>
+                    <option value="5" {{ (Auth::user()->title == "5" ? "selected":"") }}>Dr</option>
                 </select>
                 <span id="title" class="validity form-control{{ $errors->has('title') ? ' visible' : '' }}">
                     @if ($errors->has('title'))
@@ -88,11 +87,10 @@
             <div class="field">
                 <label for="gender">Gender<span>*</span></label>
                 <select class="input-group" name="gender">
-                  <option value="{{Auth::user()->gender}}" selected>{{Auth::user()->gender}}</option>
-                  <option disabled value>--------</option>
-                  <option value="1">Male</option>
-                  <option value="2">Female</option>
-                  <option value="3">Not specified</option>
+                  <option disabled value>------</option>
+                  <option value="1"{{ (Auth::user()->gender == "1" ? "selected":"") }}>Male</option>
+                  <option value="2"{{ (Auth::user()->gender == "2" ? "selected":"") }}>Female</option>
+                  <option value="3"{{ (Auth::user()->gender == "3" ? "selected":"") }}>Not specified</option>
                 </select>
                 <span id="gender" class="validity form-control{{ $errors->has('gender') ? ' visible' : '' }}">
                     @if ($errors->has('gender'))
@@ -131,7 +129,7 @@
                 <label for="country">Country<span>*</span></label>
                 <select class="input-group" name="country">
                     <option value="{{Auth::user()->country }}" selected>{{Auth::user()->country}}</option>
-                    <option disabled value="">--------</option>
+                    <option disabled value="">-----</option>
                     @include('addons.country_list')
                 </select>
                 <span id="country" class="validity form-control{{ $errors->has('country') ? ' visible' : '' }}">
