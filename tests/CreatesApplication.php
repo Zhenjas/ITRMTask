@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Artisan;
 use Illuminate\Contracts\Console\Kernel;
 
 trait CreatesApplication
@@ -19,4 +20,11 @@ trait CreatesApplication
 
         return $app;
     }
+
+    public function setUp()
+    {
+        parent::setUp();
+        Artisan::call('migrate');
+    }
+
 }
