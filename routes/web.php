@@ -11,17 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.register');
-});
 
+Route::group(['middleware' => 'guest'], function () {
+	Route::get('/', function () {
+	    return view('auth.register');
+	});
+});
 
 Route::group(['middleware' => 'auth'], function () {
 	Route::get('profile_edit', function () {
 	    return view('profile_edit');
 	});
-	Route::post('profile_update', 'ProfileController@index');
-	Route::get('/home', 'HomeController@index')->name('home');
+	Route::post('profile_update', 'ProfileController@update');
+	Route::post('password_update', 'ProfileController@password_update');
+	Route::get('dashboard', 'HomeController@index')->name('Dashboard');
 });
 
 Auth::routes();
