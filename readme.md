@@ -16,7 +16,7 @@
 5. php artisan key:generate
 6. php artisan migrate
 
-## Run the following to run the tests; you should see phpunit output of 9/9 100% successful test
+Run the following to run the tests; you should see phpunit output of 9/9 100% successful test
 ```bash
 ./vendor/bin/phpunit
 ```
