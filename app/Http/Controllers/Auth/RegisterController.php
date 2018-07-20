@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -49,20 +49,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'title' => 'required|string|max:255',
-            'forename' => 'required|string|max:255',
-            'surname' => 'required|string|max:255',
-            'dob' => 'required|string|max:255',
-            'gender' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
-            'country' => 'required|string',
-            'town' => 'required|string',
-            'post_code' => 'required|string',
-            'from_date' => 'required|string',
-            'until_date' => 'required|string',
+            'title' => 'required|max:255',
+            'forename' => 'required|max:255',
+            'surname' => 'required|max:255',
+            'dob' => 'required|max:255',
+            'gender' => 'required|max:255',
+            'email' => 'required|email|max:255|unique:users',
+            'password' => 'required|min:3|confirmed',
+            'country' => 'required',
+            'town' => 'required',
+            'post_code' => 'required',
+            'from_date' => 'required',
+            'until_date' => 'required',
             'address_one' => 'required',
-            'address_two' => 'required',
         ]);
     }
 
