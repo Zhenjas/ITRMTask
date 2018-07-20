@@ -59,121 +59,125 @@ function closeAllAlerts() {
     }
 }
 
-submitButton.addEventListener("click", function(e) {
+if(submitButton){
+    submitButton.addEventListener("click", function(e) {
 
-    closeAllAlerts();
+        closeAllAlerts();
 
-    let addressOne = document.getElementById('address-one').value.length;
-    let addressTwo = document.getElementById('address-two').value.length;
-    let addressesSymbolsCount = addressOne+addressTwo;
+        let addressOne = document.getElementById('address-one').value.length;
+        let addressTwo = document.getElementById('address-two').value.length;
+        let addressesSymbolsCount = addressOne+addressTwo;
 
-    let inputGroup = document.querySelectorAll('.input-group');
-    i = 0;
-    l = inputGroup.length;
+        let inputGroup = document.querySelectorAll('.input-group');
+        i = 0;
+        l = inputGroup.length;
 
-    let valid = true,
-        message = '';
+        let valid = true,
+            message = '';
 
-    for (i; i < l; i++) {
+        for (i; i < l; i++) {
 
-        let validity = document.getElementById(inputGroup[i].name);
+            let validity = document.getElementById(inputGroup[i].name);
 
-        if (!inputGroup[i].value) {
-            valid = false;
-            validity.style.display = "inline";
-            validity.innerHTML = errors[inputGroup[i].name];
-        }
-
-        if (inputGroup[i].name == 'email' && inputGroup[i].value !== "") {
-            if (!emailPattern.test(inputGroup[i].value)) {
+            if (!inputGroup[i].value) {
                 valid = false;
                 validity.style.display = "inline";
-                validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
+                validity.innerHTML = errors[inputGroup[i].name];
             }
-        }
 
-        if (inputGroup[i].name == 'dob' && inputGroup[i].value !== "") {
-            if (!datePattern.test(inputGroup[i].value)) {
-                valid = false;
-                validity.style.display = "inline";
-                validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
-            }
-        }
-        if (inputGroup[i].name == 'from_date' && inputGroup[i].value !== "") {
-            if (!datePattern.test(inputGroup[i].value)) {
-                valid = false;
-                validity.style.display = "inline";
-                validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
-            }
-        }
-        if (inputGroup[i].name == 'until_date' && inputGroup[i].value !== "") {
-            if (!datePattern.test(inputGroup[i].value)) {
-                valid = false;
-                validity.style.display = "inline";
-                validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
-            }
-        }
-		let passwordConfirm = document.getElementById('password_confirmation');
-
-
-        if (inputGroup[i].name == 'password' && inputGroup[i].value !== "") {
-	        if (inputGroup[i].value !== passwordConfirm.value) {
-	                valid = false;
-		            passwordValidity = document.getElementById('password');
-		            passwordValidity.style.display = "inline";
-		            passwordValidity.innerHTML = errors["password_confirmation"];
-	        }
-   		}
-
-		if(addressTwo != 0){
-	        if(addressesSymbolsCount > 59){
-	                valid = false;
-	                addressValidity = document.getElementById('address_one');
-	                addressValidity.style.display = "inline";
-	                addressValidity.innerHTML = errors["addresses_length"];       	
-	        }
-    	}
-    }
-
-    if (valid) {
-        registerForm.submit();
-    }
-}, false);
-
-changePasswordButton.addEventListener("click", function(e) {
-
-    closeAllAlerts();
-
-    let inputGroup = document.querySelectorAll('.input-group-passwd');
-    i = 0;
-    l = inputGroup.length;
-
-    let valid = true,
-        message = '';
-
-    for (i; i < l; i++) {
-
-        let validity = document.getElementById(inputGroup[i].name);
-
-        if (!inputGroup[i].value) {
-            valid = false;
-            validity.style.display = "inline";
-            validity.innerHTML = errors[inputGroup[i].name];
-        }
-
-        let passwordConfirm = document.getElementById('password_confirmation');
-
-        if (inputGroup[i].name == 'password' && inputGroup[i].value !== "") {
-            if (inputGroup[i].value !== passwordConfirm.value) {
+            if (inputGroup[i].name == 'email' && inputGroup[i].value !== "") {
+                if (!emailPattern.test(inputGroup[i].value)) {
                     valid = false;
-                    passwordValidity = document.getElementById('password');
-                    passwordValidity.style.display = "inline";
-                    passwordValidity.innerHTML = errors["password_confirmation"];
+                    validity.style.display = "inline";
+                    validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
+                }
+            }
+
+            if (inputGroup[i].name == 'dob' && inputGroup[i].value !== "") {
+                if (!datePattern.test(inputGroup[i].value)) {
+                    valid = false;
+                    validity.style.display = "inline";
+                    validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
+                }
+            }
+            if (inputGroup[i].name == 'from_date' && inputGroup[i].value !== "") {
+                if (!datePattern.test(inputGroup[i].value)) {
+                    valid = false;
+                    validity.style.display = "inline";
+                    validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
+                }
+            }
+            if (inputGroup[i].name == 'until_date' && inputGroup[i].value !== "") {
+                if (!datePattern.test(inputGroup[i].value)) {
+                    valid = false;
+                    validity.style.display = "inline";
+                    validity.innerHTML = errors[inputGroup[i].name + '_pattern'];
+                }
+            }
+    		let passwordConfirm = document.getElementById('password_confirmation');
+
+
+            if (inputGroup[i].name == 'password' && inputGroup[i].value !== "") {
+    	        if (inputGroup[i].value !== passwordConfirm.value) {
+    	                valid = false;
+    		            passwordValidity = document.getElementById('password');
+    		            passwordValidity.style.display = "inline";
+    		            passwordValidity.innerHTML = errors["password_confirmation"];
+    	        }
+       		}
+
+    		if(addressTwo != 0){
+    	        if(addressesSymbolsCount > 59){
+    	                valid = false;
+    	                addressValidity = document.getElementById('address_one');
+    	                addressValidity.style.display = "inline";
+    	                addressValidity.innerHTML = errors["addresses_length"];       	
+    	        }
+        	}
+        }
+
+        if (valid) {
+            registerForm.submit();
+        }
+    }, false);
+}
+
+if(changePasswordButton){
+    changePasswordButton.addEventListener("click", function(e) {
+
+        closeAllAlerts();
+
+        let inputGroup = document.querySelectorAll('.input-group-passwd');
+        i = 0;
+        l = inputGroup.length;
+
+        let valid = true,
+            message = '';
+
+        for (i; i < l; i++) {
+
+            let validity = document.getElementById(inputGroup[i].name);
+
+            if (!inputGroup[i].value) {
+                valid = false;
+                validity.style.display = "inline";
+                validity.innerHTML = errors[inputGroup[i].name];
+            }
+
+            let passwordConfirm = document.getElementById('password_confirmation');
+
+            if (inputGroup[i].name == 'password' && inputGroup[i].value !== "") {
+                if (inputGroup[i].value !== passwordConfirm.value) {
+                        valid = false;
+                        passwordValidity = document.getElementById('password');
+                        passwordValidity.style.display = "inline";
+                        passwordValidity.innerHTML = errors["password_confirmation"];
+                }
             }
         }
-    }
 
-    if (valid) {
-        passwordForm.submit();
-    }
-}, false);
+        if (valid) {
+            passwordForm.submit();
+        }
+    }, false);
+}
