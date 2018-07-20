@@ -16,12 +16,14 @@ const errors = {
     "from_date_pattern": "Wrong format should be dd/mm/yyyy",
     "until_date": "Current Address until Date",
     "until_date_pattern": "Wrong format should be dd/mm/yyyy",
-    "addresses_length" : "Both address shuould be less 60 symbols",
-    "password_confirmation" : "The password confirmation does not match."
+    "addresses_length" : "Both address should be less 60 symbols",
+    "password_confirmation" : "The password confirmation does not match"
 }
 
 const submitButton = document.getElementById('submit-button');
+const changePasswordButton = document.getElementById('change-password-button');
 const registerForm = document.getElementById('register-form');
+const passwordForm = document.getElementById('password-form');
 
 const datePattern = /([0-2]\d{1}|3[0-1])\/(0\d{1}|1[0-2])\/(19|20)\d{2}/;
 const emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
@@ -131,11 +133,47 @@ submitButton.addEventListener("click", function(e) {
 	                addressValidity.innerHTML = errors["addresses_length"];       	
 	        }
     	}
-
-
     }
 
     if (valid) {
         registerForm.submit();
+    }
+}, false);
+
+changePasswordButton.addEventListener("click", function(e) {
+
+    closeAllAlerts();
+
+    let inputGroup = document.querySelectorAll('.input-group-passwd');
+    i = 0;
+    l = inputGroup.length;
+
+    let valid = true,
+        message = '';
+
+    for (i; i < l; i++) {
+
+        let validity = document.getElementById(inputGroup[i].name);
+
+        if (!inputGroup[i].value) {
+            valid = false;
+            validity.style.display = "inline";
+            validity.innerHTML = errors[inputGroup[i].name];
+        }
+
+        let passwordConfirm = document.getElementById('password_confirmation');
+
+        if (inputGroup[i].name == 'password' && inputGroup[i].value !== "") {
+            if (inputGroup[i].value !== passwordConfirm.value) {
+                    valid = false;
+                    passwordValidity = document.getElementById('password');
+                    passwordValidity.style.display = "inline";
+                    passwordValidity.innerHTML = errors["password_confirmation"];
+            }
+        }
+    }
+
+    if (valid) {
+        passwordForm.submit();
     }
 }, false);
