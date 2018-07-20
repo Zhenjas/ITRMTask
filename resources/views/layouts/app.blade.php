@@ -21,8 +21,9 @@
             <button onclick="location.href='{{ route('login') }}';">{{ __('Login') }}</button>
         @else
             <span>Welcome, {{ Auth::user()->forename }}!</span>
+            <button onclick="location.href='/dashboard';">Dashboard</button>
             <button onclick="location.href='/profile_edit';">Profile edit</button>
-            <button  onclick="document.getElementById('logout-form').submit();">{{ __('Logout') }}</button>
+            <button onclick="document.getElementById('logout-form').submit();">{{ __('Logout') }}</button>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>

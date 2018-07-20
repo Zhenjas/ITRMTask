@@ -21,7 +21,7 @@
                 </div>
                 <div class="field">
                     <label for="password">Password<span>*</span></label>
-                    <input type="text" class="input-group" name="password" value="{{ old('password') }}">
+                    <input type="password" class="input-group" name="password" value="{{ old('password') }}">
                     <span id="password" class="validity form-control{{ $errors->has('password') ? ' visible' : '' }}">
                         @if ($errors->has('password'))
                                 {{ $errors->first('password') }}

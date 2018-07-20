@@ -6,4 +6,8 @@
             <h1>Dashboard</h1>
         </div>
     </div>
+
+    <div class="form dashboard-form">
+          Welcome, {{ Auth::user()->forename }}!
+    </div>
 @stop
