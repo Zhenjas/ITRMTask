@@ -1,3 +1,17 @@
+## Installation Instructions
+
+1. git clone https://github.com/Zhenjas/ITRMTask.git
+2. composer install
+3. rename .env.example to .env
+4. open the .env file with a text editor and set your mysql database settings.
+5. php artisan key:generate
+6. php artisan migrate
+
+Run the following to run the tests; you should see phpunit output of 8/8 100% successful test
+```bash
+./vendor/bin/phpunit
+```
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
@@ -6,6 +20,8 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
+
+
 
 ## About Laravel
 
