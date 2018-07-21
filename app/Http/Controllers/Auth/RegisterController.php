@@ -83,6 +83,7 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'town' => $data['town'],
             'country' => $data['country'],
+            'county' => $data['county'],
             'post_code' => $data['post_code'],
             'from_date' => $data['from_date'],
             'until_date' => $data['until_date'],

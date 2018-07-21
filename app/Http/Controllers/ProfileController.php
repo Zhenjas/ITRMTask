@@ -49,6 +49,7 @@ class ProfileController extends Controller
         $profile->dob=$request->get('dob');
         $profile->gender=$request->get('gender');
         $profile->country=$request->get('country');
+        $profile->county=$request->get('county');
         $profile->town=$request->get('town');
         $profile->post_code=$request->get('post_code');
         $profile->from_date=$request->get('from_date');
